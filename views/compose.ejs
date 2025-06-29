@@ -1,0 +1,15 @@
+<%- include("partials/header.ejs") %>
+<div class="container1">
+  <form action="/post" method="POST">
+    <label for="author">Author:</label>
+    <input class="author" type="text" name="author" placeholder="Author Name" required autofocus autocomplete="off" />
+
+    <label for="title">Title:</label>
+    <input class="title" type="text" name="title" placeholder="Post Title" required />
+
+    <label for="content">Blog:</label>
+    <textarea class="content" name="content" placeholder="Write Your Blog Here" required></textarea>
+
+    <input class="btn-post" type="submit" value="Post" />
+  </form>
+</div>

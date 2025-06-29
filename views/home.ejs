@@ -1,0 +1,62 @@
+<%- include("partials/header") %>
+
+<section class="hero-image">
+  <img src="/images/homepage.jpg" alt="Banner" height="450"/>
+</section>
+
+<main class="blog-container">
+  <section class="main-post">
+    <div class="main-text">
+      <p class="category">
+      <h2><%= posts[0].title %></h2>
+      <div>"<%= posts[0].content.substring(0, 150) %>..."</p>
+      <a class="read-link" href="/posts?blogIndex=0">Read more</a>
+      
+      <div class="main-actions">
+        <a href="/edit?index=0" class="btn edit">Edit</a>
+        <form action="/delete" method="POST" style="display:inline;">
+          <input type="hidden" name="index" value="0">
+          <button type="submit" class="btn delete">Delete</button>
+        </form>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+  <h3>Features</h3>
+  <ul>
+    <li><strong>Read:</strong> Browse through existing blog posts.</li>
+    <li><strong>Create:</strong> Compose and publish your own blog entries.</li>
+    <li><strong>Edit:</strong> Update your published posts.</li>
+    <li><strong>Delete:</strong> Remove any post you’ve created.</li>
+  </ul>
+</aside>
+
+  <!-- Sub Posts -->
+  <section class="sub-posts">
+    <% posts.slice(1).forEach((post, index) => { %>
+      <div class="card">
+        <div class="card-text">
+          <h3><%= post.title %></h3>
+          <p>"<%= post.content.substring(0, 35) %>..."</p>
+          <a class="reading-link" href="/posts?blogIndex=<%= index + 1 %>">Read more</a>
+          
+          <div class="card-actions">
+            <a href="/edit?index=<%= index + 1 %>" class="btn edit">Edit</a>
+            <form action="/delete" method="POST" style="display:inline;">
+              <input type="hidden" name="index" value="<%= index + 1 %>">
+              <button type="submit" class="btn delete">Delete</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    <% }) %>
+  </section>
+</main>
+
+<%- include("partials/footer") %>
+
+
+
